@@ -12,29 +12,41 @@ import java.util.Optional;
 @RequestMapping("/student")
 public class StudentController {
 
-    private final StudentServices studentServices ;
+    private final StudentServices studentServices;
 
 
     public StudentController(StudentServices studentServices) {
         this.studentServices = studentServices;
     }
 
-    @PostMapping ("/add")
-    public ResponseEntity <Student > addStudent (@RequestBody Student student) {
-        Student newStudent = studentServices.insertStudent(student);`````````````
+    @PostMapping("/add")
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        Student newStudent = studentServices.insertStudent(student);
         return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
     }
 
-    @PutMapping ("/update")
-    public  ResponseEntity <Student> updateStudent (@RequestBody Student student){
+    @PutMapping("/update")
+    public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
         Student newStudent = studentServices.updateStudent(student);
         return new ResponseEntity<>(newStudent, HttpStatus.OK);
     }
 
-    @GetMapping ("/find/{id}")
-    public Optional<Student> findStudentById (@PathVariable ("id") Long id){
+    @GetMapping("/find/{id}")
+    public Optional<Student> findStudentById(@PathVariable("id") Long id) {
         Optional<Student> student = studentServices.getStudentById(id);
         return student;
     }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity<Student> deleteStudents() {
+        studentServices.deleteallstudent();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping ("/findg/{grade}")
+    public Optional <Student> getStudentsByGrade (@PathVariable("grade") int grade){
+        Optional<Student> student = studentServices.getStudentByGarde(grade);
+        return student;
+    }
 }
+

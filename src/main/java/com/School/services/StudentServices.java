@@ -31,8 +31,8 @@ public class StudentServices {
 
     }
 
-//    public Student getStudentByGarde ( int grade){
-//        return studentRepo.findByGrade(grade);
-//    }
+    public Optional<Student> getStudentByGarde ( int grade){
+        return studentRepo.findByGrade(grade);
+    }
 
 }
