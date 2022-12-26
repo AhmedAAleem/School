@@ -26,4 +26,9 @@ public class EmpolyeeServices {
         empolyeeRepo.deleteAll();
     }
 
-}
+//    public Empolyee getAllEmpolyee (){
+//        return empolyeeRepo.getAllEmpolyee();
+
+    }
+
+
